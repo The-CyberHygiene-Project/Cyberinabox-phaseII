@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Connection Test</title>
+</head>
+<body>
+    <h1>AI Connection Test</h1>
+    <div id="status">Testing...</div>
+    <div id="details"></div>
+    <pre id="response"></pre>
+
+    <script>
+        async function testConnection() {
+            const statusDiv = document.getElementById('status');
+            const detailsDiv = document.getElementById('details');
+            const responseDiv = document.getElementById('response');
+
+            try {
+                statusDiv.innerHTML = '🔄 Testing connection to /api/ollama/api/tags...';
+
+                const response = await fetch('/api/ollama/api/tags');
+
+                detailsDiv.innerHTML = `Status: ${response.status} ${response.statusText}`;
+
+                const data = await response.json();
+
+                statusDiv.innerHTML = '✅ SUCCESS!';
+                responseDiv.textContent = JSON.stringify(data, null, 2);
+
+            } catch (error) {
+                statusDiv.innerHTML = '❌ FAILED';
+                detailsDiv.innerHTML = `Error: ${error.message}`;
+                responseDiv.textContent = error.stack;
+            }
+        }
+
+        testConnection();
+    </script>
+</body>
+</html>

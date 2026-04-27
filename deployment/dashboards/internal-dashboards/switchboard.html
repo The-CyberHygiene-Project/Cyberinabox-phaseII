@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>CyberHygiene Control Center</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #667eea;
+            font-size: 36px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header .subtitle {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .header .domain {
+            color: #999;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .service-card.admin::before {
+            background: linear-gradient(180deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .service-card.security::before {
+            background: linear-gradient(180deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .service-card.collaboration::before {
+            background: linear-gradient(180deg, #30cfd0 0%, #330867 100%);
+        }
+
+        .service-card.monitoring::before {
+            background: linear-gradient(180deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .card-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .card-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .card-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-online {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-local {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .status-external {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .quick-actions {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            margin-bottom: 30px;
+        }
+
+        .quick-actions h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+
+        .action-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 30px;
+            padding: 20px;
+            font-size: 14px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>CyberHygiene Control Center</h1>
+            <div class="subtitle">Centralized System Administration & Security Management</div>
+            <div class="domain">dc1.cyberinabox.net (192.168.1.10)</div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <h3>Quick Actions</h3>
+            <div class="action-buttons">
+                <a href="ai-dashboard.html" class="action-btn">Ask AI Assistant</a>
+                <a href="https://dc1.cyberinabox.net:9090" class="action-btn" target="_blank">Cockpit</a>
+                <a href="https://dc1.cyberinabox.net/ipa/ui" class="action-btn" target="_blank">Manage Users</a>
+                <a href="cpm-dashboard.html" class="action-btn">System Status</a>
+                <a href="monitoring-dashboard.html" class="action-btn">Workstation Monitoring</a>
+                <a href="openscap-dashboard.html" class="action-btn">OpenSCAP Compliance</a>
+            </div>
+        </div>
+
+        <!-- System Administration -->
+        <div class="section">
+            <div class="section-title">System Administration</div>
+            <div class="grid">
+                <a href="ai-dashboard.html" class="service-card admin">
+                    <span class="card-icon">🤖</span>
+                    <div class="card-title">AI System Assistant</div>
+                    <div class="card-description">
+                        Interactive AI-powered system administration dashboard with Code Llama.
+                        Analyze logs, troubleshoot issues, and get expert guidance.
+                    </div>
+                    <span class="card-status status-online">Online</span>
+                </a>
+
+                <a href="cpm-dashboard.html" class="service-card admin">
+                    <span class="card-icon">📊</span>
+                    <div class="card-title">CPM System Status</div>
+                    <div class="card-description">
+                        Comprehensive system monitoring dashboard showing server health,
+                        resource usage, and service status.
+                    </div>
+                    <span class="card-status status-online">Online</span>
+                </a>
+
+                <a href="https://dc1.cyberinabox.net:9090" target="_blank" class="service-card admin">
+                    <span class="card-icon">🎛️</span>
+                    <div class="card-title">Cockpit</div>
+                    <div class="card-description">
+                        Web-based server management interface for system administration,
+                        service control, and performance monitoring.
+                    </div>
+                    <span class="card-status status-online">Online</span>
+                </a>
+
+                <a href="System_Status_Dashboard.html" class="service-card admin">
+                    <span class="card-icon">💻</span>
+                    <div class="card-title">System Status Dashboard</div>
+                    <div class="card-description">
+                        Real-time system metrics, resource utilization, and infrastructure overview.
+                    </div>
+                    <span class="card-status status-online">Online</span>
+                </a>
+
+                <a href="monitoring-dashboard.html" class="service-card admin">
+                    <span class="card-icon">📈</span>
+                    <div class="card-title">Workstation Monitoring</div>
+                    <div class="card-description">
+                        FIPS 140-2 compliant workstation monitoring with Prometheus metrics
+                        for all 6 systems in the environment.
+                    </div>
+                    <span class="card-status status-online">Online</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Security & Compliance -->
+        <div class="section">
+            <div class="section-title">Security & Compliance</div>
+            <div class="grid">
+                <a href="http://dc1.cyberinabox.net:9000" target="_blank" class="service-card security">
+                    <span class="card-icon">🛡️</span>
+                    <div class="card-title">Wazuh SIEM</div>
+                    <div class="card-description">
+                        Security Information and Event Management (SIEM) for threat detection,
+                        vulnerability assessment, and compliance monitoring.
+                    </div>
+                    <span class="card-status status-online">Online</span>
+                </a>
+
+                <a href="https://cyberinabox.net/policy-index.html" target="_blank" class="service-card security">
+                    <span class="card-icon">📋</span>
+                    <div class="card-title">Policy Index</div>
+                    <div class="card-description">
+                        Complete NIST 800-171 compliance documentation including System Security Plan,
+                        POA&M, and security policies.
+                    </div>
+                    <span class="card-status status-online">Online</span>
+                </a>
+
+                <a href="https://cyberinabox.net/Policy_Index.html" target="_blank" class="service-card security">
+                    <span class="card-icon">📑</span>
+                    <div class="card-title">Contract Coach Policy Index</div>
+                    <div class="card-description">
+                        Organizational security policies, procedures, and compliance documentation
+                        for The Contract Coach.
+                    </div>
+                    <span class="card-status status-online">Online</span>
+                </a>
+
+                <a href="openscap-dashboard.html" class="service-card security">
+                    <span class="card-icon">📋</span>
+                    <div class="card-title">OpenSCAP CUI Compliance</div>
+                    <div class="card-description">
+                        Consolidated NIST 800-171 CUI profile scan results across all
+                        CPN systems. Daily automated collection with per-host drill-down.
+                    </div>
+                    <span class="card-status status-online">Online</span>
+                </a>
+
+                <a href="https://dc1.cyberinabox.net/ipa/ui" target="_blank" class="service-card security">
+                    <span class="card-icon">🔐</span>
+                    <div class="card-title">FreeIPA - Identity Management</div>
+                    <div class="card-description">
+                        Centralized authentication, authorization, and identity management.
+                        Manage users, groups, SUDO rules, and HBAC policies.
+                    </div>
+                    <span class="card-status status-online">Online</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Collaboration & Communication -->
+        <div class="section">
+            <div class="section-title">Collaboration & Communication</div>
+            <div class="grid">
+                <a href="https://nextcloud.cyberinabox.net" target="_blank" class="service-card collaboration">
+                    <span class="card-icon">☁️</span>
+                    <div class="card-title">Nextcloud</div>
+                    <div class="card-description">
+                        Secure file sharing, collaboration platform, and document management.
+                        FIPS-compliant storage for CUI/FCI data.
+                    </div>
+                    <span class="card-status status-external">External</span>
+                </a>
+
+                <a href="#" class="service-card collaboration" style="opacity: 0.6; cursor: not-allowed;">
+                    <span class="card-icon">📧</span>
+                    <div class="card-title">Roundcube Webmail</div>
+                    <div class="card-description">
+                        Web-based email client with secure IMAP/SMTP access.
+                        Integrated with FreeIPA for authentication.
+                    </div>
+                    <span class="card-status" style="background: #f8d7da; color: #721c24;">Not Installed</span>
+                </a>
+
+                <a href="smb://dc1.cyberinabox.net/shares" class="service-card collaboration">
+                    <span class="card-icon">📁</span>
+                    <div class="card-title">Samba File Server</div>
+                    <div class="card-description">
+                        Network file shares with LUKS encryption. RAID 5 storage
+                        integrated with FreeIPA for access control.
+                    </div>
+                    <span class="card-status status-local">Local</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Monitoring & Logs -->
+        <div class="section">
+            <div class="section-title">Monitoring & Logs</div>
+            <div class="grid">
+                <a href="http://dc1.cyberinabox.net:9000" target="_blank" class="service-card monitoring">
+                    <span class="card-icon">📊</span>
+                    <div class="card-title">Graylog</div>
+                    <div class="card-description">
+                        Centralized log management and analysis. Search, analyze, and visualize
+                        logs from all infrastructure components.
+                    </div>
+                    <span class="card-status status-online">Online</span>
+                </a>
+
+                <a href="ai-dashboard.html?mode=logs" class="service-card monitoring">
+                    <span class="card-icon">🔍</span>
+                    <div class="card-title">AI Log Analysis</div>
+                    <div class="card-description">
+                        AI-powered log analysis using Code Llama. Automatically identify
+                        issues, patterns, and security concerns.
+                    </div>
+                    <span class="card-status status-online">Online</span>
+                </a>
+
+                <a href="http://dc1.cyberinabox.net:3001" target="_blank" class="service-card monitoring">
+                    <span class="card-icon">📉</span>
+                    <div class="card-title">Grafana</div>
+                    <div class="card-description">
+                        Metrics visualization and analytics. Custom dashboards for system
+                        performance and security metrics.
+                    </div>
+                    <span class="card-status status-online">Online</span>
+                </a>
+
+                <a href="https://dc1.cyberinabox.net:9091" target="_blank" class="service-card monitoring">
+                    <span class="card-icon">🔬</span>
+                    <div class="card-title">Prometheus</div>
+                    <div class="card-description">
+                        Time-series metrics database. Direct access for custom queries
+                        and target health monitoring.
+                    </div>
+                    <span class="card-status status-online">Online</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- External Resources -->
+        <div class="section">
+            <div class="section-title">External Resources</div>
+            <div class="grid">
+                <a href="https://192.168.1.1" target="_blank" class="service-card">
+                    <span class="card-icon">🔥</span>
+                    <div class="card-title">pfSense Firewall</div>
+                    <div class="card-description">
+                        Network firewall and router configuration. Suricata IDS/IPS,
+                        VPN management, and network security.
+                    </div>
+                    <span class="card-status status-external">External</span>
+                </a>
+
+                <a href="http://192.168.1.7:11434" target="_blank" class="service-card">
+                    <span class="card-icon">🦙</span>
+                    <div class="card-title">Ollama AI Server</div>
+                    <div class="card-description">
+                        Local AI/LLM server running Code Llama on Mac Mini M4.
+                        Air-gapped AI infrastructure for system administration.
+                    </div>
+                    <span class="card-status status-online">Online</span>
+                </a>
+
+                <a href="https://cyberinabox.net/" target="_blank" class="service-card">
+                    <span class="card-icon">🏠</span>
+                    <div class="card-title">CyberHygiene Project</div>
+                    <div class="card-description">
+                        Main project website with information about affordable NIST 800-171
+                        compliance for small defense contractors.
+                    </div>
+                    <span class="card-status status-online">Online</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <strong>CyberHygiene Project</strong> | The Contract Coach<br>
+            NIST 800-171 Compliant Infrastructure | FIPS 140-2 Enabled<br>
+            <small>Classification: CONTROLLED UNCLASSIFIED INFORMATION (CUI)</small>
+        </div>
+    </div>
+
+    <script>
+        // Check status of services
+        async function checkServicesStatus() {
+            console.log('CyberHygiene Control Center loaded');
+        }
+
+        window.onload = checkServicesStatus;
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "192.168.1.1": {
+    "hostname": "pfsense-gateway",
+    "description": "pfSense Firewall"
+  },
+  "192.168.1.7": {
+    "hostname": "ai.cyberinabox.net",
+    "description": "AI/ML Server"
+  },
+  "192.168.1.10": {
+    "hostname": "dc1.cyberinabox.net",
+    "description": "Domain Controller"
+  },
+  "192.168.1.21": {
+    "hostname": "ws1.cyberinabox.net",
+    "description": "Workstation 1"
+  },
+  "192.168.1.22": {
+    "hostname": "ws2.cyberinabox.net",
+    "description": "Workstation 2"
+  },
+  "192.168.1.23": {
+    "hostname": "ws3.cyberinabox.net",
+    "description": "Workstation 3"
+  }
+}

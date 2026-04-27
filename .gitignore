@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+._*
+
+# Editor swap / temp
+*.swp
+*.swo
+*~
+
+# Python build artifacts
+__pycache__/
+*.pyc
+*.pyo
+
+# Vendored repos' original git internals (renamed from .git on import)
+_external_git_metadata/
+
+# Environment files
+.env
+.venv/
+
+# Office temp lockfiles
+~$*.docx
+~$*.xlsx
+~$*.pptx

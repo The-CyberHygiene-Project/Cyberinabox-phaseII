@@ -1,0 +1,91 @@
+{
+  "timestamp": "2026-04-26T09:05:56-06:00",
+  "services": {
+    "postfix": {"running": true, "status": "active"},
+    "dovecot": {"running": true, "status": "active"},
+    "samba_smb": {"running": true, "status": "active"},
+    "samba_nmb": {"running": true, "status": "active"},
+    "wazuh": {"running": true, "status": "active"},
+    "freeipa": {"running": true, "services_up": 9, "services_total": 9},
+    "graylog": {"running": true, "status": "active"},
+    "grafana": {"running": true, "status": "active"},
+    "prometheus": {"running": true, "status": "active"},
+    "opensearch": {"running": true, "status": "active"},
+    "mongodb": {"running": true, "status": "active"},
+    "httpd": {"running": true, "status": "active"},
+    "auditd": {"running": true, "status": "active"},
+    "firewalld": {"running": true, "status": "active"},
+    "yara": {"running": true, "status": "integrated"}
+  },
+  "storage": {
+    "datastore": {"mounted": true, "size": "931G", "used": "15G", "available": "917G", "percent": "2%"},
+    "raid": {"exists": false},
+    "luks_volumes": 7
+  },
+  "system": {
+    "uptime": "4 days, 44 minutes",
+    "fips_enabled": true,
+    "selinux": "Unknown",
+    "kernel": "5.14.0-611.47.1.el9_7.x86_64"
+  },
+  "prometheus_targets": {
+  "prometheus": {
+    "job": "prometheus",
+    "instance": "dc1-prometheus",
+    "health": "up",
+    "last_scrape": "2026-04-26T09:05:49.418289098-06:00",
+    "last_error": ""
+  },
+  "server-dc1": {
+    "job": "server-dc1",
+    "instance": "dc1.cyberinabox.net:9100",
+    "health": "up",
+    "last_scrape": "2026-04-26T09:05:50.020883165-06:00",
+    "last_error": ""
+  },
+  "suricata": {
+    "job": "suricata",
+    "instance": "localhost:9101",
+    "health": "down",
+    "last_scrape": "2026-04-26T09:05:53.566346316-06:00",
+    "last_error": "Get \"http://localhost:9101/metrics\": dial tcp [::1]:9101: connect: connection refused"
+  },
+  "workstation-accounting": {
+    "job": "workstation-accounting",
+    "instance": "192.168.1.113:9100",
+    "health": "up",
+    "last_scrape": "2026-04-26T09:05:43.918262233-06:00",
+    "last_error": ""
+  },
+  "workstation-ai": {
+    "job": "workstation-ai",
+    "instance": "192.168.1.7:9100",
+    "health": "down",
+    "last_scrape": "2026-04-26T09:05:51.074292086-06:00",
+    "last_error": "Get \"https://192.168.1.7:9100/metrics\": dial tcp 192.168.1.7:9100: connect: no route to host"
+  },
+  "workstation-engineering": {
+    "job": "workstation-engineering",
+    "instance": "192.168.1.104:9100",
+    "health": "up",
+    "last_scrape": "2026-04-26T09:05:52.386907873-06:00",
+    "last_error": ""
+  },
+  "workstation-labrat": {
+    "job": "workstation-labrat",
+    "instance": "192.168.1.115:9100",
+    "health": "down",
+    "last_scrape": "2026-04-26T09:05:46.642803044-06:00",
+    "last_error": "Get \"https://192.168.1.115:9100/metrics\": dial tcp 192.168.1.115:9100: connect: no route to host"
+  }
+},
+  "prometheus_summary": {
+    "targets_up": 4,
+    "targets_total": 7
+  },
+  "summary": {
+    "services_running": 14,
+    "services_total": 14,
+    "storage_ok": true
+  }
+}

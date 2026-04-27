@@ -1,0 +1,22 @@
+# SysAdmin Agent Dashboard - Requirements
+# NIST 800-171 / CMMC Compliant Local AI Agent
+
+# Core Framework
+streamlit>=1.31.0
+langgraph>=0.0.30
+langchain>=0.1.0
+langchain-community>=0.0.20
+langchain-openai>=0.0.5
+
+# Data Validation
+pydantic>=2.5.0
+
+# System Monitoring
+psutil>=5.9.0
+
+# Utilities
+python-dotenv>=1.0.0
+requests>=2.31.0
+
+# Optional: Authentication
+# streamlit-authenticator>=0.3.0

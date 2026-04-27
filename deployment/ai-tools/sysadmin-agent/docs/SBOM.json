@@ -1,0 +1,203 @@
+{
+  "$schema": "http://cyclonedx.org/schema/bom-1.4.schema.json",
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.4",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-02-02T19:00:00Z",
+    "tools": [
+      {
+        "vendor": "CyberHygiene",
+        "name": "Manual Inventory",
+        "version": "1.0"
+      }
+    ],
+    "component": {
+      "type": "application",
+      "name": "OpenClaw AI SysAdmin Platform",
+      "version": "1.0.0",
+      "description": "NIST 800-171 compliant AI-assisted system administration platform",
+      "licenses": [
+        {
+          "license": {
+            "name": "Proprietary"
+          }
+        }
+      ],
+      "supplier": {
+        "name": "CyberHygiene / cyberinabox.net"
+      }
+    }
+  },
+  "components": [
+    {
+      "type": "application",
+      "name": "openclaw-gateway",
+      "version": "1.0.0",
+      "description": "AI gateway with security controls, Citadel Guard, token auth",
+      "licenses": [{"license": {"name": "Proprietary"}}],
+      "purl": "pkg:generic/openclaw-gateway@1.0.0"
+    },
+    {
+      "type": "application",
+      "name": "sudo-approval-proxy",
+      "version": "1.0.0",
+      "description": "External HITL enforcement for privileged operations",
+      "licenses": [{"license": {"name": "Proprietary"}}],
+      "purl": "pkg:generic/sudo-approval-proxy@1.0.0"
+    },
+    {
+      "type": "application",
+      "name": "sysadmin-agent-dashboard",
+      "version": "1.0.0",
+      "description": "Streamlit-based AI assistant dashboard",
+      "licenses": [{"license": {"name": "Proprietary"}}],
+      "purl": "pkg:generic/sysadmin-agent-dashboard@1.0.0"
+    },
+    {
+      "type": "application",
+      "name": "cpm-dashboard",
+      "version": "2.0.0",
+      "description": "Flask-based system monitoring and approval dashboard",
+      "licenses": [{"license": {"name": "Proprietary"}}],
+      "purl": "pkg:generic/cpm-dashboard@2.0.0"
+    },
+    {
+      "type": "library",
+      "name": "Flask",
+      "version": "3.0.0",
+      "description": "Python web framework",
+      "licenses": [{"license": {"id": "BSD-3-Clause"}}],
+      "purl": "pkg:pypi/flask@3.0.0"
+    },
+    {
+      "type": "library",
+      "name": "Flask-SocketIO",
+      "version": "5.3.6",
+      "description": "WebSocket support for Flask",
+      "licenses": [{"license": {"id": "MIT"}}],
+      "purl": "pkg:pypi/flask-socketio@5.3.6"
+    },
+    {
+      "type": "library",
+      "name": "Flask-CORS",
+      "version": "4.0.0",
+      "description": "Cross-Origin Resource Sharing for Flask",
+      "licenses": [{"license": {"id": "MIT"}}],
+      "purl": "pkg:pypi/flask-cors@4.0.0"
+    },
+    {
+      "type": "library",
+      "name": "eventlet",
+      "version": "0.35.2",
+      "description": "Concurrent networking library",
+      "licenses": [{"license": {"id": "MIT"}}],
+      "purl": "pkg:pypi/eventlet@0.35.2"
+    },
+    {
+      "type": "library",
+      "name": "python-socketio",
+      "version": "5.11.0",
+      "description": "Socket.IO server",
+      "licenses": [{"license": {"id": "MIT"}}],
+      "purl": "pkg:pypi/python-socketio@5.11.0"
+    },
+    {
+      "type": "library",
+      "name": "streamlit",
+      "version": "1.32.0",
+      "description": "Data app framework",
+      "licenses": [{"license": {"id": "Apache-2.0"}}],
+      "purl": "pkg:pypi/streamlit@1.32.0"
+    },
+    {
+      "type": "library",
+      "name": "langchain-core",
+      "version": "0.1.52",
+      "description": "LLM application framework",
+      "licenses": [{"license": {"id": "MIT"}}],
+      "purl": "pkg:pypi/langchain-core@0.1.52"
+    },
+    {
+      "type": "library",
+      "name": "langchain-ollama",
+      "version": "0.1.0",
+      "description": "Ollama integration for LangChain",
+      "licenses": [{"license": {"id": "MIT"}}],
+      "purl": "pkg:pypi/langchain-ollama@0.1.0"
+    },
+    {
+      "type": "library",
+      "name": "langgraph",
+      "version": "0.0.55",
+      "description": "Graph-based agent workflows",
+      "licenses": [{"license": {"id": "MIT"}}],
+      "purl": "pkg:pypi/langgraph@0.0.55"
+    },
+    {
+      "type": "application",
+      "name": "ollama",
+      "version": "0.1.x",
+      "description": "Local LLM inference server",
+      "licenses": [{"license": {"id": "MIT"}}],
+      "purl": "pkg:generic/ollama@0.1"
+    },
+    {
+      "type": "machine-learning-model",
+      "name": "llama3.3-70b-instruct",
+      "version": "Q4_K_M",
+      "description": "Meta Llama 3.3 70B Instruct (4-bit quantized)",
+      "licenses": [{"license": {"name": "Llama 3.3 Community License"}}],
+      "purl": "pkg:huggingface/meta-llama/llama-3.3-70b-instruct",
+      "properties": [
+        {"name": "parameters", "value": "70.6B"},
+        {"name": "quantization", "value": "Q4_K_M"},
+        {"name": "size_gb", "value": "42"}
+      ]
+    },
+    {
+      "type": "operating-system",
+      "name": "Rocky Linux",
+      "version": "9.5",
+      "description": "Enterprise Linux distribution",
+      "licenses": [{"license": {"id": "GPL-2.0-only"}}],
+      "purl": "pkg:generic/rocky-linux@9.5"
+    },
+    {
+      "type": "library",
+      "name": "Python",
+      "version": "3.9.21",
+      "description": "Python interpreter (system)",
+      "licenses": [{"license": {"id": "PSF-2.0"}}],
+      "purl": "pkg:generic/python@3.9.21"
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:generic/openclaw-gateway@1.0.0",
+      "dependsOn": [
+        "pkg:pypi/flask@3.0.0",
+        "pkg:generic/ollama@0.1"
+      ]
+    },
+    {
+      "ref": "pkg:generic/sysadmin-agent-dashboard@1.0.0",
+      "dependsOn": [
+        "pkg:pypi/streamlit@1.32.0",
+        "pkg:pypi/langchain-core@0.1.52",
+        "pkg:pypi/langchain-ollama@0.1.0",
+        "pkg:pypi/langgraph@0.0.55",
+        "pkg:generic/openclaw-gateway@1.0.0"
+      ]
+    },
+    {
+      "ref": "pkg:generic/cpm-dashboard@2.0.0",
+      "dependsOn": [
+        "pkg:pypi/flask@3.0.0",
+        "pkg:pypi/flask-socketio@5.3.6",
+        "pkg:pypi/flask-cors@4.0.0",
+        "pkg:pypi/eventlet@0.35.2"
+      ]
+    }
+  ]
+}

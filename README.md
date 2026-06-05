@@ -40,6 +40,7 @@ running a FIPS-validated Rocky Linux 9.7 service VM. SecureMac
 mail, VPN, IDS/IPS, SIEM, and monitoring into one host.
 
 This is a companion to:
+- **[diwai](https://github.com/The-CyberHygiene-Project/diwai)** — Governance artifacts for this system: Policies, Procedures, SSP, POAM, Assessments, and Training.
 - **[cyberhygiene-documentation](https://github.com/The-CyberHygiene-Project/cyberhygiene-documentation)** — Phase I & II documentation (Rocky Linux RS1).
 - **[cyberhygiene-evolution](https://github.com/The-CyberHygiene-Project/cyberhygiene-evolution)** — Manuscript, incident narratives, predecessor publications.
 
@@ -62,12 +63,11 @@ git checkout legacy/phase-II-installer
 
 ## What's in here
 
+Governance artifacts (Policies, Procedures, SSP, POAM, Assessments, Training) are
+maintained in the companion **[diwai](https://github.com/The-CyberHygiene-Project/diwai)** repo.
+
 ```
-ssp/                     System Security Plan v1.2 (SecureMac)
 sbom/                    Software Bill of Materials v2.1 + history
-poam/                    Plan of Action & Milestones v1.2 + history
-policies/                Acceptable Use, Backup, Incident Response, etc.
-procedures/              Operational procedures (.md + .docx pairs)
 configuration/           pf, USBGuard, launchd, scripts, Rocky VM setup
 mscp/diwai_phase1_baseline/   Custom mSCP baseline for the Mac host
 evidence/                Compliance evidence (OpenSCAP, FIPS, MFA, etc.)
